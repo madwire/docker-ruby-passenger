@@ -16,5 +16,4 @@ ONBUILD RUN bundle config --global frozen 1 && bundle install --jobs 4 --deploym
 ONBUILD COPY . /usr/src/app
 ONBUILD RUN bundle exec rake assets:precompile
 
-EXPOSE 80
-CMD ["passenger", "start", "-p", "$PORT", "--max-pool-size", "$MAX_POOL_SIZE", "--min-instances", "$MIN_INSTANCES", "--friendly-error-pages"]
+CMD passenger start -p $PORT --max-pool-size $MAX_POOL_SIZE --min-instances $MIN_INSTANCES --friendly-error-pages
