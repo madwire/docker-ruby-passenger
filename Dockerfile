@@ -5,6 +5,9 @@ ENV PORT=80
 ENV MIN_INSTANCES=1
 ENV MAX_POOL_SIZE=3
 
+ENV RACK_ENV=production
+ENV RAILS_ENV=production
+
 RUN gem install passenger && passenger-config install-standalone-runtime
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
