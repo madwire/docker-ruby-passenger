@@ -11,7 +11,7 @@ WORKDIR /usr/src/app
 
 ONBUILD COPY Gemfile /usr/src/app/
 ONBUILD COPY Gemfile.lock /usr/src/app/
-ONBUILD RUN bundle config --global frozen 1 && bundle install --jobs 4 --deployment
+ONBUILD RUN bundle config --global frozen 1 && bundle install --jobs 4 --deployment --without development test
 
 ONBUILD COPY . /usr/src/app
 ONBUILD RUN bundle exec rake assets:precompile
