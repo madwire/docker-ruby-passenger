@@ -14,6 +14,6 @@ ONBUILD COPY Gemfile.lock /usr/src/app/
 ONBUILD RUN bundle config --global frozen 1 && bundle install --jobs 4 --deployment --without development test
 
 ONBUILD COPY . /usr/src/app
-ONBUILD RUN bundle exec rake assets:precompile
+ONBUILD RUN RAILS_ENV=production SECRET_KEY_BASE=temp bundle exec rake assets:precompile
 
-CMD sh -c 'passenger start -p $PORT --max-pool-size $MAX_POOL_SIZE --min-instances $MIN_INSTANCES --friendly-error-pages'
+CMD sh -c 'passenger start -p $PORT --max-pool-size $MAX_POOL_SIZE --min-instances $MIN_INSTANCES --log-file /dev/stdout'
