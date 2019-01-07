@@ -1,4 +1,4 @@
-FROM ruby:2.5
+FROM ruby:2.6
 MAINTAINER Richard Adams richard@madwire.co.uk
 
 ENV PORT=80
