@@ -19,4 +19,4 @@ ONBUILD RUN bundle config --global frozen 1 && bundle install --jobs 4 --deploym
 ONBUILD COPY . /usr/src/app
 ONBUILD RUN NODE_ENV=production RAILS_ENV=production SECRET_KEY_BASE=temp bundle exec rake assets:precompile
 
-CMD sh -c 'passenger start -p $PORT --max-pool-size $MAX_POOL_SIZE --min-instances $MIN_INSTANCES --log-file /dev/stdout'
+CMD sh -c 'passenger start -p $PORT --max-pool-size $MAX_POOL_SIZE --min-instances $MIN_INSTANCES --disable-log-prefix --log-file /dev/stdout'
