@@ -5,6 +5,8 @@ ENV PORT=80
 ENV MIN_INSTANCES=2
 ENV MAX_POOL_SIZE=6
 
+RUN apt-get update -qq && apt-get install -y build-essential libsodium23
+
 RUN gem install passenger && passenger-config install-standalone-runtime
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
