@@ -8,7 +8,7 @@ ENV MAX_POOL_SIZE=6
 RUN curl -sL https://deb.nodesource.com/setup_8.x | bash - && curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
 RUN apt-get update -qq && apt-get install -y build-essential nodejs yarn libsodium23
 
-RUN gem install passenger && passenger-config install-standalone-runtime
+RUN gem install passenger && passenger-config install-standalone-runtime && passenger-config build-native-support
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
 
