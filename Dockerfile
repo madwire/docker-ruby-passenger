@@ -7,7 +7,7 @@ ENV MAX_POOL_SIZE=6
 
 RUN apt-get update -qq && apt-get install -y build-essential libsodium23
 
-RUN gem install passenger && passenger-config install-standalone-runtime
+RUN gem install passenger && passenger-config install-standalone-runtime && passenger-config build-native-support
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
 
