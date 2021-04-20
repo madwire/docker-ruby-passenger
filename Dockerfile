@@ -14,6 +14,8 @@ WORKDIR /usr/src/app
 
 ONBUILD COPY Gemfile /usr/src/app/
 ONBUILD COPY Gemfile.lock /usr/src/app/
+ONBUILD ARG GITHUB_PKG_AUTH_TOKEN
+ONBUILD RUN if [[ -z "$GITHUB_PKG_AUTH_TOKEN" ]] ; then echo 'Argument not provided' ; else bundle config set rubygems.pkg.github.com ${GITHUB_PKG_AUTH_TOKEN} ; fi
 ONBUILD RUN bundle config --global frozen 1 && bundle install --jobs 4 --deployment --without development test
 
 ONBUILD COPY . /usr/src/app
