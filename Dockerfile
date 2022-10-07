@@ -1,5 +1,5 @@
 FROM ruby:3.0
-MAINTAINER Richard Adams richard@madwire.co.uk
+LABEL MAINTAINER Richard Adams richard@madwire.co.uk
 
 ENV PORT=80
 ENV MIN_INSTANCES=2
