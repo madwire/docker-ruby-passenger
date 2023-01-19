@@ -1,9 +1,10 @@
-FROM ruby:3.0
+FROM ruby:3.2
 LABEL MAINTAINER Richard Adams richard@madwire.co.uk
 
 ENV PORT=80
 ENV MIN_INSTANCES=2
 ENV MAX_POOL_SIZE=6
+ENV RUBY_YJIT_ENABLE=1
 
 RUN curl -sL https://deb.nodesource.com/setup_16.x | bash - && curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
 RUN apt-get update -qq && apt-get install -y build-essential nodejs yarn libsodium23
