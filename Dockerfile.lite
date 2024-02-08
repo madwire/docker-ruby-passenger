@@ -1,4 +1,4 @@
-FROM ruby:3.2
+FROM ruby:3.3
 LABEL MAINTAINER Richard Adams richard@madwire.co.uk
 
 ENV PORT=80
