@@ -6,6 +6,10 @@ ENV MIN_INSTANCES=2
 ENV MAX_POOL_SIZE=6
 ENV RUBY_YJIT_ENABLE=1
 
+# Specify the RubyGems version to fix an issue with passenger not loading after v3.5.11
+# https://github.com/phusion/passenger/issues/2567
+RUN gem update --system 3.5.11 
+
 RUN curl -sL https://deb.nodesource.com/setup_20.x | bash - && curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
 RUN apt-get update -qq && apt-get install -y build-essential nodejs yarn libsodium23 libjemalloc2 && rm -rf /var/lib/apt/lists/*
 
